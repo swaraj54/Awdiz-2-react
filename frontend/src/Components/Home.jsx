@@ -1,4 +1,7 @@
+import './../Components/Styles/Home.css'
+
 function Home() {
+
     return (
         <div>
             Home Page

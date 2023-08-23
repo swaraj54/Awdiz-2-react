@@ -4,7 +4,7 @@ import './DynamicStyle.css';
 const DynamicStyle = () => {
 
     const [isButtonActive, setIsButtonActive] = useState(false)
-    
+
     const handleButtonClick = () => {
         setIsButtonActive(!isButtonActive)
     }
