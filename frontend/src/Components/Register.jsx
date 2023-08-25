@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { toast } from "react-hot-toast";
 
 const Register = () => {
     const [userData, setUserData] = useState({ name: '', email: "", password: "", confirmPassword: "" })
@@ -15,24 +16,25 @@ const Register = () => {
         // alert("SUBmitted")
         if (userData.name && userData.email && userData.password && userData.confirmPassword) {
             if (userData.password === userData.confirmPassword) {
-                const response = await axios.post("http://localhost:8000/register", { userData });
-                // const {name,emial, password} = req.body.userData;
-                // return response.status(201).json({ success: true, message: "Registeration Successfull." })
-                // return response.status(500).json({ success: false, message: error })
-                if (response.data.success) {
-                    setUserData({ name: '', email: "", password: "", confirmPassword: "" })
-                    router('/login')
-                    alert(response.data.message)
-                } else {
-                    alert(response.data.message)
+                try {
+                    const response = await axios.post("http://localhost:8000/api/v1/register", { userData });
+                    if (response.data.success) {
+                        setUserData({ name: '', email: "", password: "", confirmPassword: "" })
+                        router('/login')
+                        toast.success(response.data.message)
+                    }
+                } catch (error) {
+                    toast.error(error.response.data.message)
                 }
-            } else {
+            }
+            else {
                 alert('Password and Confirm Password not matchh..')
             }
         } else {
             alert("All fields are mandtory.")
         }
     }
+
 
     return (
         <div>
