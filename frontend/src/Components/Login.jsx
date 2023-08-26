@@ -6,8 +6,12 @@ import { AuthContext } from "../Context/AuthContext";
 
 function Login() {
     const [userData, setUserData] = useState({ email: "", password: "" });
+
     const { dispatch, state } = useContext(AuthContext)
     console.log(state, "state from context into login componnt")
+
+
+
     const router = useNavigate();
     const handleChange = (event) => {
         setUserData({ ...userData, [event.target.name]: event.target.value })
@@ -18,6 +22,11 @@ function Login() {
             try {
                 const response = await axios.post('http://localhost:8000/api/v1/login', { userData })
                 if (response.data.success) {
+                    dispatch({
+                        type: "LOGIN",
+                        payload: response.data.user
+                    })
+                    localStorage.setItem("batch2Token", JSON.stringify(response.data.token))
                     setUserData({ email: "", password: "" })
                     router('/')
                     toast.success(response.data.message)

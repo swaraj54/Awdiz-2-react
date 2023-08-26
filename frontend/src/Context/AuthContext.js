@@ -26,7 +26,7 @@ const HandleAuthContext = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ dispatch, state }}>
-            {children}
+            {children} 
         </AuthContext.Provider>
     )
 }

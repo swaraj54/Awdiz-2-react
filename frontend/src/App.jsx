@@ -11,13 +11,16 @@ import UseEffectThree from './Components/UseEffectThree';
 import UseEffectFour from './Components/UseEffectFour';
 import SingleProduct from './Components/SingleProduct';
 import MultipleProduct from './Components/MultipleProduct';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Mapping from './Components/Mapping';
 import Props from './Components/Props';
 import StateEffect from './Components/StateEffect';
 import DynamicStyle from './Components/DynamicStyle';
+import { AuthContext } from './Context/AuthContext';
 
 function App() {
+  const { state } = useContext(AuthContext);
+  console.log(state,"state here from context")
   const [name, setName] = useState("abhi")
   console.log(name, "name in app")
   return (
