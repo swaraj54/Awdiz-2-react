@@ -4,11 +4,12 @@ import { AuthContext } from '../Context/AuthContext';
 
 function Home() {
 
-    const { state } = useContext(AuthContext)
+    const { state, dispatch } = useContext(AuthContext)
 
     return (
         <div>
-            Home Page user - {state?.user?.name}
+            <h1> Home Page user - {state?.user?.name}</h1>
+            <button onClick={()=> dispatch({type : "LOGOUT"})}>Logout</button>
         </div>
     )
 }
