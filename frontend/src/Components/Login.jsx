@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
+import api from "../ApiConfig/index";
 
 function Login() {
     const [userData, setUserData] = useState({ email: "", password: "" });
@@ -20,7 +21,7 @@ function Login() {
         event.preventDefault();
         if (userData.email && userData.password) {
             try {
-                const response = await axios.post('http://localhost:8000/api/v1/login', { userData })
+                const response = await api.post('/login', { userData })
                 if (response.data.success) {
                     dispatch({
                         type: "LOGIN",
@@ -38,6 +39,13 @@ function Login() {
             toast.error("All fields are mandtory.")
         }
     }
+
+    useEffect(() => {
+        if (state?.user?.name) {
+            toast.success("You are already logged in.")
+            router('/')
+        }
+    }, [state])
 
     return (
         <div>

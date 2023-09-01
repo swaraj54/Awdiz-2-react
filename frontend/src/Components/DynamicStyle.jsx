@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './DynamicStyle.css';
+import AuhtProtected from './AuthProtected';
 
 const DynamicStyle = () => {
 
@@ -10,11 +11,11 @@ const DynamicStyle = () => {
     }
     const myClassName = isButtonActive ? "active-style" : "un-active-style"
     return (
-        <div>
+        <AuhtProtected>
             <button onClick={handleButtonClick} className={myClassName}>
                 {isButtonActive ? "active" : "unactive"}
             </button>
-        </div>
+        </AuhtProtected>
     )
 }
 
