@@ -28,7 +28,7 @@ function MultipleProduct() {
             <h1>Multiple Product Page</h1>
             {products?.length ? <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap" }}>
                 {products.map((product) => (
-                    <div style={{ width: "30%", height: "300px", border: "2px solid black", marginBottom: '40px' }}>
+                    <div onClick={() => router(`/single-product/${product._id}`)} style={{ width: "30%", height: "300px", border: "2px solid black", marginBottom: '40px' }}>
                         <img src={product.img} alt="Img" />
                         <h1>Product Name : {product.name}</h1>
                         <h4>Product Price : {product.price}</h4>

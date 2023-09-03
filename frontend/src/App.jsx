@@ -17,6 +17,7 @@ import Props from './Components/Props';
 import StateEffect from './Components/StateEffect';
 import DynamicStyle from './Components/DynamicStyle';
 import { AuthContext } from './Context/AuthContext';
+import Cart from './Components/Cart';
 
 function App() {
   const { state } = useContext(AuthContext);
@@ -40,6 +41,7 @@ function App() {
         <Route exact path='/props' element={<Props />} />
         <Route exact path='/stateeffect' element={<StateEffect />} />
         <Route exact path="/dynamic-style" element={<DynamicStyle />} />
+        <Route exact path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
