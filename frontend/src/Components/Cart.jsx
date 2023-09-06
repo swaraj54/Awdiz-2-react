@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Context/AuthContext'
 import api from '../ApiConfig';
+import AuhtProtected from './AuthProtected';
 
 const Cart = () => {
     const [cartProduct, setCartProducts] = useState([]);
@@ -26,14 +27,14 @@ const Cart = () => {
     }, [state])
 
     return (
-        <div>
+        <AuhtProtected>
             {cartProduct?.length ? <div>
                 <h1>Total Price - {totalPrice}</h1>
                 {cartProduct.map((pro) => (
                     <div>{pro.name}</div>
                 ))}
             </div> : <div>Loading..</div>}
-        </div>
+        </AuhtProtected>
     )
 }
 

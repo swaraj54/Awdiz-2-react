@@ -7,12 +7,16 @@ import { AuthContext } from "../Context/AuthContext";
 
 const Register = () => {
     const { state } = useContext(AuthContext)
-    const [userData, setUserData] = useState({ name: '', email: "", password: "", confirmPassword: "" })
+    const [userData, setUserData] = useState({ name: '', email: "", password: "", confirmPassword: "", role: "buyer" })
     const router = useNavigate();
     console.log(userData, "userData")
     const handleChange = (event) => {
         // console.log(event.target.value, "- value", event.target.name, "- name")
         setUserData({ ...userData, [event.target.name]: event.target.value })
+    }
+    const handleChangeForSelect = (event) => {
+        // console.log(event.target.value, "- value", event.target.name, "- name")
+        setUserData({ ...userData, ["role"]: event.target.value })
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,7 +26,7 @@ const Register = () => {
                 try {
                     const response = await api.post("/register", { userData });
                     if (response.data.success) {
-                        setUserData({ name: '', email: "", password: "", confirmPassword: "" })
+                        setUserData({ name: '', email: "", password: "", confirmPassword: "", role: "buyer" })
                         router('/login')
                         toast.success(response.data.message)
                     }
@@ -52,6 +56,11 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <label>Name</label><br />
                 <input type="text" name='name' onChange={handleChange} /><br />
+                <label>Select Role - Buyer/Seller ?</label><br />
+                <select onChange={handleChangeForSelect}>
+                    <option value='buyer'>Buyer</option>
+                    <option value='seller'>Seller</option>
+                </select><br />
                 <label>Email</label><br />
                 <input type="email" name='email' onChange={handleChange} /><br />
                 <label>Password</label><br />

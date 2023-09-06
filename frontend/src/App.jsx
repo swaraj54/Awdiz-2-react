@@ -18,14 +18,16 @@ import StateEffect from './Components/StateEffect';
 import DynamicStyle from './Components/DynamicStyle';
 import { AuthContext } from './Context/AuthContext';
 import Cart from './Components/Cart';
+import Navbar from './Components/Navbar';
 
 function App() {
   const { state } = useContext(AuthContext);
-  console.log(state,"state here from context")
+  console.log(state, "state here from context")
   const [name, setName] = useState("abhi")
   console.log(name, "name in app")
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route exact path='/register' element={<Register />} />
@@ -42,6 +44,9 @@ function App() {
         <Route exact path='/stateeffect' element={<StateEffect />} />
         <Route exact path="/dynamic-style" element={<DynamicStyle />} />
         <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/seller-product" element={<SellerProduct />} />
+        <Route exact path="/add-product" element={<AddProduct />} />
+        <Route exact path="/update-product" element={<UpdateProduct />} />
       </Routes>
     </div>
   );
