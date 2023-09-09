@@ -19,6 +19,11 @@ import DynamicStyle from './Components/DynamicStyle';
 import { AuthContext } from './Context/AuthContext';
 import Cart from './Components/Cart';
 import Navbar from './Components/Navbar';
+import SellerProduct from './Components/Seller/SellerProduct';
+import AddProduct from './Components/Seller/AddProduct';
+import UpdateProduct from './Components/Seller/UpdateProduct';
+import Memo from './Components/Memo';
+import Callback from './Components/Callback';
 
 function App() {
   const { state } = useContext(AuthContext);
@@ -47,6 +52,8 @@ function App() {
         <Route exact path="/seller-product" element={<SellerProduct />} />
         <Route exact path="/add-product" element={<AddProduct />} />
         <Route exact path="/update-product" element={<UpdateProduct />} />
+        <Route exact path='/memo' element={<Memo />} />
+        <Route exact path='/callback' element={<Callback />} />
       </Routes>
     </div>
   );

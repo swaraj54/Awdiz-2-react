@@ -1,8 +1,10 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../Context/AuthContext';
 
 const SellerProduct = () => {
     const [sellerProducts, setSellerProducts] = useState([]);
+    const { state } = useContext(AuthContext)
     useEffect(() => {
         async function getSellerProduct() {
             const response = await axios.post("/seller-product", { userId: state?.user?.userId })
