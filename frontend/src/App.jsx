@@ -24,6 +24,7 @@ import AddProduct from './Components/Seller/AddProduct';
 import UpdateProduct from './Components/Seller/UpdateProduct';
 import Memo from './Components/Memo';
 import Callback from './Components/Callback';
+import Ref from './Components/Ref';
 
 function App() {
   const { state } = useContext(AuthContext);
@@ -54,6 +55,7 @@ function App() {
         <Route exact path="/update-product" element={<UpdateProduct />} />
         <Route exact path='/memo' element={<Memo />} />
         <Route exact path='/callback' element={<Callback />} />
+        <Route exact path='/ref' element={<Ref />} />
       </Routes>
     </div>
   );
