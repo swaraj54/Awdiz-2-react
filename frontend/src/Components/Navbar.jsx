@@ -21,9 +21,9 @@ const Navbar = () => {
                 <h3 onClick={() => router('/Multiple-Product')}>Womens</h3>
                 <h3 onClick={() => router('/Multiple-Product')}>Kids</h3>
                 {state?.user?.role == 'seller' && <>
-                    <h3>Your Product - multiple pgae</h3>
-                    <h3>Update Product - single page product</h3>
-                    <h3>Add Product - register</h3>
+                    <h3 onClick={() => router('/seller-product')}>Your Product - multiple pgae</h3>
+                    <h3 onClick={() => router('/update-product')}>Update Product - single page product</h3>
+                    <h3 onClick={() => router('/add-product')}>Add Product - register</h3>
                 </>}
             </div>
             <div style={{ width: "20%", display: 'flex', justifyContent: 'space-around' }}>

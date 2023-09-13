@@ -52,7 +52,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/seller-product" element={<SellerProduct />} />
         <Route exact path="/add-product" element={<AddProduct />} />
-        <Route exact path="/update-product" element={<UpdateProduct />} />
+        <Route exact path="/update-product/:id" element={<UpdateProduct />} />
         <Route exact path='/memo' element={<Memo />} />
         <Route exact path='/callback' element={<Callback />} />
         <Route exact path='/ref' element={<Ref />} />
